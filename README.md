@@ -156,61 +156,12 @@ Explore my repositories to see my work in:
 
 ---
 
-# 📊 GitHub Analytics
 
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=Sharma964&show_icons=true&include_all_commits=true&count_private=true&rank_icon=github&theme=tokyonight&hide_border=true" height="180" alt="GitHub Stats"/>
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Sharma964&layout=compact&langs_count=8&theme=tokyonight&hide_border=true" height="180" alt="Top Languages"/>
-</p>
-
----
 
 # 🔥 Contribution Streak
 
 <p align="center">
   <img src="https://streak-stats.demolab.com/?user=Sharma964&theme=tokyonight&hide_border=true" alt="GitHub Contribution Streak"/>
-</p>
-
----
-
-# 📈 Contribution Activity
-
-<p align="center">
-  <a href="https://github.com/Sharma964">
-    <img src="https://github-readme-activity-graph.vercel.app/graph?username=Sharma964&theme=tokyo-night&hide_border=true&area=true" alt="GitHub Activity Graph"/>
-  </a>
-</p>
-
----
-
-# 🏆 GitHub Achievements
-
-<p align="center">
-  <a href="https://github.com/Sharma964">
-    <img src="https://github-profile-trophy.vercel.app/?username=Sharma964&theme=tokyonight&no-frame=true&no-bg=true&margin-w=8&row=1&column=7" alt="GitHub Trophies"/>
-  </a>
-</p>
-
----
-
-# 📅 Contribution Graph
-
-<p align="center">
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Sharma964&theme=tokyonight" alt="GitHub Contribution Graph"/>
-</p>
-
----
-
-# 📌 GitHub Profile Summary
-
-<p align="center">
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=Sharma964&theme=tokyonight" height="180" alt="Repositories Per Language"/>
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=Sharma964&theme=tokyonight" height="180" alt="Most Commit Language"/>
-</p>
-
-<p align="center">
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=Sharma964&theme=tokyonight" height="180" alt="GitHub Statistics"/>
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=Sharma964&theme=tokyonight&utcOffset=5.5" height="180" alt="Productive Time"/>
 </p>
 
 ---
