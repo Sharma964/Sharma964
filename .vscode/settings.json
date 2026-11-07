@@ -1,0 +1,10 @@
+{
+  "python.analysis.extraPaths": [
+    "C:\\Users\\sonu\\AppData\\Roaming\\Python\\Python314\\site-packages",
+    "C:\\Users\\ACER\\AppData\\Roaming\\Python\\Python314\\site-packages"
+  ],
+  "python.autoComplete.extraPaths": [
+    "C:\\Users\\sonu\\AppData\\Roaming\\Python\\Python314\\site-packages",
+    "C:\\Users\\ACER\\AppData\\Roaming\\Python\\Python314\\site-packages"
+  ]
+}

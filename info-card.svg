@@ -1,0 +1,167 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="495" viewBox="0 0 480 495" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">
+<defs>
+  <linearGradient id="ibg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#111722"/>
+    <stop offset="1" stop-color="#0d1117"/>
+  </linearGradient>
+</defs>
+
+<!-- card background -->
+<rect width="480" height="495" rx="12" fill="url(#ibg)"/>
+<rect x="0.5" y="0.5" width="479" height="494" rx="12" fill="none" stroke="#30363d"/>
+
+<!-- title bar -->
+<line x1="0" y1="30" x2="480" y2="30" stroke="#30363d"/>
+<circle cx="20" cy="15.0" r="5" fill="#ff5f56"/>
+<circle cx="36" cy="15.0" r="5" fill="#ffbd2e"/>
+<circle cx="52" cy="15.0" r="5" fill="#27c93f"/>
+<text x="240" y="19" fill="#7d8590" font-size="12" text-anchor="middle">Sharma964@github: ~$ neofetch</text>
+
+<!-- ── ROW 0: identity header ── -->
+<g opacity="0" transform="translate(0,5)">
+  <text x="20" y="58" font-size="14" font-weight="700">
+    <tspan fill="#3fb950">Sharma964</tspan>
+    <tspan fill="#7d8590">@</tspan>
+    <tspan fill="#22d3ee">github</tspan>
+  </text>
+  <line x1="160" y1="54" x2="460" y2="54" stroke="#30363d" stroke-opacity="0.8"/>
+  <animate attributeName="opacity" from="0" to="1" begin="0.15s" dur="0.4s" fill="freeze"/>
+  <animateTransform attributeName="transform" type="translate" from="0 5" to="0 0" begin="0.15s" dur="0.4s" fill="freeze" calcMode="spline" keySplines="0.2 0.8 0.2 1"/>
+</g>
+
+<!-- ── ROW 1: Role ── -->
+<g opacity="0" transform="translate(0,5)">
+  <text x="20" y="82" fill="#ffa657" font-size="12.5" font-weight="700">Role</text>
+  <text x="100" y="82" fill="#c9d1d9" font-size="12.5">Computer Engineering Student</text>
+  <animate attributeName="opacity" from="0" to="1" begin="0.22s" dur="0.4s" fill="freeze"/>
+  <animateTransform attributeName="transform" type="translate" from="0 5" to="0 0" begin="0.22s" dur="0.4s" fill="freeze" calcMode="spline" keySplines="0.2 0.8 0.2 1"/>
+</g>
+
+<!-- ── ROW 2: Focus ── -->
+<g opacity="0" transform="translate(0,5)">
+  <text x="20" y="103" fill="#ffa657" font-size="12.5" font-weight="700">Focus</text>
+  <text x="100" y="103" fill="#c9d1d9" font-size="12.5">AI/ML, Full-Stack Dev, Algorithms</text>
+  <animate attributeName="opacity" from="0" to="1" begin="0.28s" dur="0.4s" fill="freeze"/>
+  <animateTransform attributeName="transform" type="translate" from="0 5" to="0 0" begin="0.28s" dur="0.4s" fill="freeze" calcMode="spline" keySplines="0.2 0.8 0.2 1"/>
+</g>
+
+<!-- ── ROW 3: Portfolio ── -->
+<g opacity="0" transform="translate(0,5)">
+  <text x="20" y="124" fill="#ffa657" font-size="12.5" font-weight="700">Portfolio</text>
+  <text x="100" y="124" fill="#58a6ff" font-size="12.5">sonusharma7.com.np</text>
+  <animate attributeName="opacity" from="0" to="1" begin="0.34s" dur="0.4s" fill="freeze"/>
+  <animateTransform attributeName="transform" type="translate" from="0 5" to="0 0" begin="0.34s" dur="0.4s" fill="freeze" calcMode="spline" keySplines="0.2 0.8 0.2 1"/>
+</g>
+
+<!-- ── ROW 4: Contact ── -->
+<g opacity="0" transform="translate(0,5)">
+  <text x="20" y="145" fill="#ffa657" font-size="12.5" font-weight="700">Email</text>
+  <text x="100" y="145" fill="#c9d1d9" font-size="12.5">sonusharma.dev07@gmail.com</text>
+  <animate attributeName="opacity" from="0" to="1" begin="0.40s" dur="0.4s" fill="freeze"/>
+  <animateTransform attributeName="transform" type="translate" from="0 5" to="0 0" begin="0.40s" dur="0.4s" fill="freeze" calcMode="spline" keySplines="0.2 0.8 0.2 1"/>
+</g>
+
+<!-- ── SECTION: Stack ── -->
+<g opacity="0" transform="translate(0,5)">
+  <text x="20" y="174" fill="#58a6ff" font-size="12.5" font-weight="700">&#8212; Tech Stack</text>
+  <line x1="110" y1="170" x2="460" y2="170" stroke="#30363d" stroke-opacity="0.8"/>
+  <animate attributeName="opacity" from="0" to="1" begin="0.48s" dur="0.4s" fill="freeze"/>
+  <animateTransform attributeName="transform" type="translate" from="0 5" to="0 0" begin="0.48s" dur="0.4s" fill="freeze" calcMode="spline" keySplines="0.2 0.8 0.2 1"/>
+</g>
+
+<!-- ── ROW: Languages ── -->
+<g opacity="0" transform="translate(0,5)">
+  <text x="20" y="196" fill="#ffa657" font-size="12.5" font-weight="700">Languages</text>
+  <text x="100" y="196" fill="#c9d1d9" font-size="12.5">C, C++, Python, JavaScript, TypeScript</text>
+  <animate attributeName="opacity" from="0" to="1" begin="0.54s" dur="0.4s" fill="freeze"/>
+  <animateTransform attributeName="transform" type="translate" from="0 5" to="0 0" begin="0.54s" dur="0.4s" fill="freeze" calcMode="spline" keySplines="0.2 0.8 0.2 1"/>
+</g>
+
+<!-- ── ROW: Frontend ── -->
+<g opacity="0" transform="translate(0,5)">
+  <text x="20" y="217" fill="#ffa657" font-size="12.5" font-weight="700">Frontend</text>
+  <text x="100" y="217" fill="#c9d1d9" font-size="12.5">React, Next.js, Tailwind CSS, HTML5/CSS3</text>
+  <animate attributeName="opacity" from="0" to="1" begin="0.60s" dur="0.4s" fill="freeze"/>
+  <animateTransform attributeName="transform" type="translate" from="0 5" to="0 0" begin="0.60s" dur="0.4s" fill="freeze" calcMode="spline" keySplines="0.2 0.8 0.2 1"/>
+</g>
+
+<!-- ── ROW: Backend ── -->
+<g opacity="0" transform="translate(0,5)">
+  <text x="20" y="238" fill="#ffa657" font-size="12.5" font-weight="700">Backend</text>
+  <text x="100" y="238" fill="#c9d1d9" font-size="12.5">Node.js, Express.js, REST APIs</text>
+  <animate attributeName="opacity" from="0" to="1" begin="0.66s" dur="0.4s" fill="freeze"/>
+  <animateTransform attributeName="transform" type="translate" from="0 5" to="0 0" begin="0.66s" dur="0.4s" fill="freeze" calcMode="spline" keySplines="0.2 0.8 0.2 1"/>
+</g>
+
+<!-- ── ROW: AI / ML ── -->
+<g opacity="0" transform="translate(0,5)">
+  <text x="20" y="259" fill="#ffa657" font-size="12.5" font-weight="700">AI / ML</text>
+  <text x="100" y="259" fill="#c9d1d9" font-size="12.5">Scikit-learn, Pandas, Data Science, GIS</text>
+  <animate attributeName="opacity" from="0" to="1" begin="0.72s" dur="0.4s" fill="freeze"/>
+  <animateTransform attributeName="transform" type="translate" from="0 5" to="0 0" begin="0.72s" dur="0.4s" fill="freeze" calcMode="spline" keySplines="0.2 0.8 0.2 1"/>
+</g>
+
+<!-- ── ROW: Database ── -->
+<g opacity="0" transform="translate(0,5)">
+  <text x="20" y="280" fill="#ffa657" font-size="12.5" font-weight="700">Database</text>
+  <text x="100" y="280" fill="#c9d1d9" font-size="12.5">MySQL, SQLite</text>
+  <animate attributeName="opacity" from="0" to="1" begin="0.78s" dur="0.4s" fill="freeze"/>
+  <animateTransform attributeName="transform" type="translate" from="0 5" to="0 0" begin="0.78s" dur="0.4s" fill="freeze" calcMode="spline" keySplines="0.2 0.8 0.2 1"/>
+</g>
+
+<!-- ── ROW: Tools ── -->
+<g opacity="0" transform="translate(0,5)">
+  <text x="20" y="301" fill="#ffa657" font-size="12.5" font-weight="700">Tools</text>
+  <text x="100" y="301" fill="#c9d1d9" font-size="12.5">Git, GitHub, Postman, VS Code, Linux</text>
+  <animate attributeName="opacity" from="0" to="1" begin="0.84s" dur="0.4s" fill="freeze"/>
+  <animateTransform attributeName="transform" type="translate" from="0 5" to="0 0" begin="0.84s" dur="0.4s" fill="freeze" calcMode="spline" keySplines="0.2 0.8 0.2 1"/>
+</g>
+
+<!-- ── SECTION: Highlights ── -->
+<g opacity="0" transform="translate(0,5)">
+  <text x="20" y="331" fill="#58a6ff" font-size="12.5" font-weight="700">&#8212; Key Highlights</text>
+  <line x1="130" y1="327" x2="460" y2="327" stroke="#30363d" stroke-opacity="0.8"/>
+  <animate attributeName="opacity" from="0" to="1" begin="0.90s" dur="0.4s" fill="freeze"/>
+  <animateTransform attributeName="transform" type="translate" from="0 5" to="0 0" begin="0.90s" dur="0.4s" fill="freeze" calcMode="spline" keySplines="0.2 0.8 0.2 1"/>
+</g>
+
+<!-- ── BULLET 1 ── -->
+<g opacity="0" transform="translate(0,5)">
+  <circle cx="23" cy="351" r="2.5" fill="#3fb950"/>
+  <text x="34" y="355" fill="#c9d1d9" font-size="12.5">AI Landslide Early Warning System for Nepal</text>
+  <animate attributeName="opacity" from="0" to="1" begin="0.96s" dur="0.4s" fill="freeze"/>
+  <animateTransform attributeName="transform" type="translate" from="0 5" to="0 0" begin="0.96s" dur="0.4s" fill="freeze" calcMode="spline" keySplines="0.2 0.8 0.2 1"/>
+</g>
+
+<!-- ── BULLET 2 ── -->
+<g opacity="0" transform="translate(0,5)">
+  <circle cx="23" cy="374" r="2.5" fill="#3fb950"/>
+  <text x="34" y="378" fill="#c9d1d9" font-size="12.5">Smart Fire Emergency AI Response &amp; Rapid Alerts</text>
+  <animate attributeName="opacity" from="0" to="1" begin="1.02s" dur="0.4s" fill="freeze"/>
+  <animateTransform attributeName="transform" type="translate" from="0 5" to="0 0" begin="1.02s" dur="0.4s" fill="freeze" calcMode="spline" keySplines="0.2 0.8 0.2 1"/>
+</g>
+
+<!-- ── BULLET 3 ── -->
+<g opacity="0" transform="translate(0,5)">
+  <circle cx="23" cy="397" r="2.5" fill="#3fb950"/>
+  <text x="34" y="401" fill="#c9d1d9" font-size="12.5">HerbTrace: Blockchain Ayurvedic Supply Provenance</text>
+  <animate attributeName="opacity" from="0" to="1" begin="1.08s" dur="0.4s" fill="freeze"/>
+  <animateTransform attributeName="transform" type="translate" from="0 5" to="0 0" begin="1.08s" dur="0.4s" fill="freeze" calcMode="spline" keySplines="0.2 0.8 0.2 1"/>
+</g>
+
+<!-- ── BULLET 4 ── -->
+<g opacity="0" transform="translate(0,5)">
+  <circle cx="23" cy="420" r="2.5" fill="#3fb950"/>
+  <text x="34" y="424" fill="#c9d1d9" font-size="12.5">Health AI Chatbot &amp; Interactive DSA Visualizer</text>
+  <animate attributeName="opacity" from="0" to="1" begin="1.14s" dur="0.4s" fill="freeze"/>
+  <animateTransform attributeName="transform" type="translate" from="0 5" to="0 0" begin="1.14s" dur="0.4s" fill="freeze" calcMode="spline" keySplines="0.2 0.8 0.2 1"/>
+</g>
+
+<!-- ── BULLET 5 ── -->
+<g opacity="0" transform="translate(0,5)">
+  <circle cx="23" cy="443" r="2.5" fill="#3fb950"/>
+  <text x="34" y="447" fill="#c9d1d9" font-size="12.5">12+ Public Open-Source Repositories on GitHub</text>
+  <animate attributeName="opacity" from="0" to="1" begin="1.20s" dur="0.4s" fill="freeze"/>
+  <animateTransform attributeName="transform" type="translate" from="0 5" to="0 0" begin="1.20s" dur="0.4s" fill="freeze" calcMode="spline" keySplines="0.2 0.8 0.2 1"/>
+</g>
+</svg>
