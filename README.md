@@ -160,10 +160,14 @@ An end-to-end AI-driven system engineered to evaluate landslide vulnerability an
 ---
 
 <!-- ================= GITHUB STATS & STREAK ================= -->
-## 📈 GitHub Streak &amp; Metrics
+## 📈 GitHub Streak &amp; Activity
 
 <p align="center">
   <img src="https://streak-stats.demolab.com/?user=Sharma964&theme=tokyonight&hide_border=true" alt="GitHub Contribution Streak"/>
+</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Sharma964/Sharma964/output/github-contribution-grid-snake-dark.svg" alt="GitHub Contribution Snake" />
 </p>
 
 ---
