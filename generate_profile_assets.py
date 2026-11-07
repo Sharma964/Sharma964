@@ -24,7 +24,7 @@ except ImportError:
 
 GITHUB_USERNAME = "Sharma964"
 FULL_NAME = "Sonu Sharma"
-AVATAR_URL = "https://avatars.githubusercontent.com/u/221389629?v=4"
+AVATAR_URL = f"https://github.com/{GITHUB_USERNAME}.png"
 OUTPUT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 
@@ -135,6 +135,8 @@ def generate_terminal_card_svg():
 
     ascii_rows = []
     local_avatar = None
+    force_download = os.environ.get("DOWNLOAD_AVATAR") == "1" or "--refresh-avatar" in sys.argv
+
     for cand in ["avatar.png", "avatar.jpg", "profile.jpg", "photo.jpg"]:
         cand_p = os.path.join(OUTPUT_DIR, cand)
         if os.path.exists(cand_p):
@@ -142,16 +144,19 @@ def generate_terminal_card_svg():
             break
 
     try:
-        if local_avatar and Image is not None:
+        img = None
+        if force_download or not local_avatar:
+            if Image is not None:
+                res = requests.get(AVATAR_URL, timeout=10)
+                if res.status_code == 200:
+                    img = Image.open(io.BytesIO(res.content)).convert("L")
+                    # Save downloaded avatar locally
+                    save_path = os.path.join(OUTPUT_DIR, "avatar.png")
+                    with open(save_path, "wb") as f:
+                        f.write(res.content)
+                    print(f"Downloaded fresh avatar from {AVATAR_URL}")
+        elif local_avatar and Image is not None:
             img = Image.open(local_avatar).convert("L")
-        elif Image is not None:
-            res = requests.get(AVATAR_URL, timeout=8)
-            if res.status_code == 200:
-                img = Image.open(io.BytesIO(res.content)).convert("L")
-            else:
-                img = None
-        else:
-            img = None
 
         if img is not None:
             img = ImageEnhance.Contrast(img).enhance(1.8)

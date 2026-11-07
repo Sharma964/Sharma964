@@ -1,0 +1,44 @@
+name: Auto-Sync GitHub Avatar & Profile
+
+on:
+  schedule:
+    # Run automatically every 24 hours (at midnight UTC)
+    - cron: "0 0 * * *"
+  workflow_dispatch: # Allows one-click manual update anytime from GitHub
+
+jobs:
+  sync-avatar:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install Pillow requests
+
+      - name: Fetch latest avatar & regenerate assets
+        env:
+          DOWNLOAD_AVATAR: "1"
+        run: |
+          python generate_profile_assets.py
+
+      - name: Commit and push changes if avatar updated
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add avatar.png terminal-card.svg
+          if git diff --staged --quiet; then
+            echo "No changes in avatar detected."
+          else
+            git commit -m "chore(avatar): auto-sync ASCII portrait with latest GitHub profile picture"
+            git push origin main
+          fi
