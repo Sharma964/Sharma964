@@ -4,9 +4,9 @@ generate_profile_assets.py
 Generates the exact viral Cyberpunk animated GitHub profile setup,
 customized 100% comprehensively for Sonu Sharma (GitHub: Sharma964):
 1. github-contribution-animation.svg (850x165): 53x7 calendar with diagonal wave sweep, specular glints, and neon glow.
-2. terminal-card.svg (840x875): macOS terminal with circular ASCII portrait of Sonu from avatar.png, row-by-row reveal, sweeping cursor, and whoami footer.
+2. terminal-card.svg (840x875): macOS terminal with circular ASCII portrait of Sonu, row-by-row reveal, sweeping cursor, and whoami footer.
 3. info-card.svg (480x495): Neofetch-style terminal info card reflecting Sonu's Computer Engineering, AI/ML, Full-Stack, and project highlights.
-4. README.md: Full comprehensive portfolio and GitHub profile integration.
+4. README.md: Full comprehensive portfolio and GitHub profile integration with dynamic auto-updating projects.
 """
 
 import os
@@ -14,6 +14,7 @@ import sys
 import math
 import random
 import io
+import json
 import requests
 
 try:
@@ -26,6 +27,121 @@ GITHUB_USERNAME = "Sharma964"
 FULL_NAME = "Sonu Sharma"
 AVATAR_URL = f"https://github.com/{GITHUB_USERNAME}.png"
 OUTPUT_DIR = os.path.dirname(os.path.abspath(__file__))
+CACHE_FILE = os.path.join(OUTPUT_DIR, "repos_cache.json")
+
+# Curated metadata dictionary for known flagship projects
+CURATED_METADATA = {
+    "AI-LandSlide-Early-Predication": {
+        "icon": "🌋",
+        "title": "AI Landslide Early Prediction",
+        "desc": "AI-powered landslide prediction and early warning platform combining ML, environmental indicators, and GIS mapping for disaster risk reduction in Nepal.",
+        "tags": ["Python", "TypeScript", "ML", "GIS"]
+    },
+    "Smart-Fire-Emergency-Response": {
+        "icon": "🔥",
+        "title": "Smart Fire Emergency Response",
+        "desc": "AI-driven smart fire emergency response system designed for rapid hazard detection, instant alert dissemination, and emergency logistics coordination.",
+        "tags": ["JavaScript", "AI / ML", "IoT", "APIs"]
+    },
+    "HerbTrace-ayur-block-chain": {
+        "icon": "🌿",
+        "title": "HerbTrace Blockchain",
+        "desc": "Decentralized provenance and verification platform utilizing blockchain to authenticate and track Ayurvedic herb supply chains from origin to consumer.",
+        "tags": ["TypeScript", "Blockchain", "Smart Contracts", "Web3"]
+    },
+    "Health-AI-Chatbot": {
+        "icon": "🩺",
+        "title": "Health AI Conversational Assistant",
+        "desc": "Intelligent healthcare conversational assistant providing symptom guidance, medical information triage, and intuitive health insights.",
+        "tags": ["JavaScript", "AI / NLP", "Node.js", "APIs"]
+    },
+    "DSA-Visualizer": {
+        "icon": "📊",
+        "title": "Interactive DSA Visualizer",
+        "desc": "Dynamic web-based algorithm visualizer bringing sorting, graph traversals, trees, and core data structures to life with step-by-step animations.",
+        "tags": ["TypeScript", "Algorithms", "Data Structures", "Canvas"]
+    },
+    "Personal-Portfolio": {
+        "icon": "🌐",
+        "title": "Personal Portfolio Website",
+        "desc": "Modern personal portfolio showcasing projects, technical competencies, and developer journey with responsive layouts and interactive UI.",
+        "tags": ["TypeScript", "React", "Tailwind CSS", "Vite"]
+    },
+    "FoodExpress-3d": {
+        "icon": "🍔",
+        "title": "FoodExpress 3D Web Experience",
+        "desc": "Interactive 3D online food discovery and ordering web application built with modern web graphics and responsive design.",
+        "tags": ["TypeScript", "Three.js", "React", "Web3D"]
+    },
+    "DSA-Assignments": {
+        "icon": "🧠",
+        "title": "DSA Algorithms & Problem Solving",
+        "desc": "Comprehensive repository of core data structures, graph algorithms, and competitive programming challenges implemented in C++.",
+        "tags": ["C++", "DSA", "Algorithms", "Problem Solving"]
+    }
+}
+
+
+# -------------------------------------------------------------------------
+# DYNAMIC REPOSITORY FETCHER
+# -------------------------------------------------------------------------
+def fetch_github_repos():
+    """
+    Dynamically fetches repositories from GitHub API.
+    Saves/uses local cache so offline or rate-limited runs succeed gracefully.
+    """
+    token = os.environ.get("GITHUB_TOKEN")
+    headers = {"User-Agent": "Mozilla/5.0"}
+    if token:
+        headers["Authorization"] = f"Bearer {token}"
+
+    repos = []
+    try:
+        url = f"https://api.github.com/users/{GITHUB_USERNAME}/repos?sort=pushed&per_page=100"
+        res = requests.get(url, headers=headers, timeout=8)
+        if res.status_code == 200:
+            raw_data = res.json()
+            # Filter out forks and profile repository
+            for r in raw_data:
+                if not r.get("fork") and r.get("name", "").lower() != GITHUB_USERNAME.lower():
+                    repos.append({
+                        "name": r.get("name"),
+                        "html_url": r.get("html_url"),
+                        "description": r.get("description"),
+                        "language": r.get("language"),
+                        "stargazers_count": r.get("stargazers_count", 0)
+                    })
+            # Save to cache
+            with open(CACHE_FILE, "w", encoding="utf-8") as f:
+                json.dump(repos, f, indent=2)
+            print(f"Successfully fetched {len(repos)} repositories from GitHub API.")
+    except Exception as e:
+        print(f"Notice: GitHub API fetch skipped or failed ({e}). Checking local cache...")
+
+    # Load from cache if API request didn't return repos
+    if not repos and os.path.exists(CACHE_FILE):
+        try:
+            with open(CACHE_FILE, "r", encoding="utf-8") as f:
+                repos = json.load(f)
+            print(f"Loaded {len(repos)} repositories from local cache.")
+        except Exception:
+            pass
+
+    # Hardcoded fallback list if no cache and no network
+    if not repos:
+        default_names = [
+            "AI-LandSlide-Early-Predication",
+            "Smart-Fire-Emergency-Response",
+            "HerbTrace-ayur-block-chain",
+            "Health-AI-Chatbot",
+            "DSA-Visualizer",
+            "Personal-Portfolio",
+            "FoodExpress-3d",
+            "DSA-Assignments"
+        ]
+        repos = [{"name": n, "html_url": f"https://github.com/{GITHUB_USERNAME}/{n}"} for n in default_names]
+
+    return repos
 
 
 # -------------------------------------------------------------------------
@@ -135,7 +251,7 @@ def generate_terminal_card_svg():
 
     ascii_rows = []
     local_avatar = None
-    force_download = os.environ.get("DOWNLOAD_AVATAR") == "1" or "--refresh-avatar" in sys.argv
+    force_download = os.environ.get("DOWNLOAD_AVATAR") == "1" or "--refresh-avatar" in sys.argv or "--refresh-all" in sys.argv
 
     for cand in ["avatar.png", "avatar.jpg", "profile.jpg", "photo.jpg"]:
         cand_p = os.path.join(OUTPUT_DIR, cand)
@@ -145,17 +261,20 @@ def generate_terminal_card_svg():
 
     try:
         img = None
-        if force_download or not local_avatar:
-            if Image is not None:
-                res = requests.get(AVATAR_URL, timeout=10)
-                if res.status_code == 200:
-                    img = Image.open(io.BytesIO(res.content)).convert("L")
-                    # Save downloaded avatar locally
-                    save_path = os.path.join(OUTPUT_DIR, "avatar.png")
-                    with open(save_path, "wb") as f:
-                        f.write(res.content)
-                    print(f"Downloaded fresh avatar from {AVATAR_URL}")
-        elif local_avatar and Image is not None:
+        if force_download:
+            try:
+                if Image is not None:
+                    res = requests.get(AVATAR_URL, timeout=6)
+                    if res.status_code == 200:
+                        img = Image.open(io.BytesIO(res.content)).convert("L")
+                        save_path = os.path.join(OUTPUT_DIR, "avatar.png")
+                        with open(save_path, "wb") as f:
+                            f.write(res.content)
+                        print(f"Downloaded fresh avatar from {AVATAR_URL}")
+            except Exception as e:
+                print(f"Notice: Fresh avatar download skipped ({e}). Falling back to local avatar...")
+
+        if img is None and local_avatar and Image is not None:
             img = Image.open(local_avatar).convert("L")
 
         if img is not None:
@@ -253,7 +372,7 @@ def generate_terminal_card_svg():
 # -------------------------------------------------------------------------
 # 3. GENERATE info-card.svg (FOR SHARMA964)
 # -------------------------------------------------------------------------
-def generate_info_card_svg():
+def generate_info_card_svg(repo_count=12):
     width = 480
     height = 495
 
@@ -419,7 +538,7 @@ def generate_info_card_svg():
 <!-- ── BULLET 5 ── -->
 <g opacity="0" transform="translate(0,5)">
   <circle cx="23" cy="443" r="2.5" fill="#3fb950"/>
-  <text x="34" y="447" fill="#c9d1d9" font-size="12.5">12+ Public Open-Source Repositories on GitHub</text>
+  <text x="34" y="447" fill="#c9d1d9" font-size="12.5">{repo_count}+ Public Open-Source Repositories on GitHub</text>
   <animate attributeName="opacity" from="0" to="1" begin="1.20s" dur="0.4s" fill="freeze"/>
   <animateTransform attributeName="transform" type="translate" from="0 5" to="0 0" begin="1.20s" dur="0.4s" fill="freeze" calcMode="spline" keySplines="0.2 0.8 0.2 1"/>
 </g>
@@ -432,10 +551,51 @@ def generate_info_card_svg():
 
 
 # -------------------------------------------------------------------------
-# 4. INJECT INTO README.md (COMPREHENSIVE SHARMA964 PROFILE INTEGRATION)
+# 4. INJECT INTO README.md (DYNAMIC REPOSITORY TABLE)
 # -------------------------------------------------------------------------
-def inject_into_readme():
+def generate_project_table_html(repos):
+    """
+    Constructs an HTML table displaying the top 6 most active / newest projects.
+    """
+    table_rows = []
+    top_repos = repos[:6]
+
+    for i in range(0, len(top_repos), 2):
+        r1 = top_repos[i]
+        r2 = top_repos[i + 1] if i + 1 < len(top_repos) else None
+
+        def format_card(r):
+            if not r:
+                return '    <td width="50%" valign="top"></td>'
+            name = r.get("name", "")
+            meta = CURATED_METADATA.get(name, {})
+            icon = meta.get("icon", "🚀")
+            title = meta.get("title", name.replace("-", " "))
+            desc = meta.get("desc", r.get("description") or "Open-source software project engineered by Sonu Sharma.")
+            tags = meta.get("tags") or ([r.get("language")] if r.get("language") else ["Software", "Open Source"])
+            tags_html = " • ".join(f"<code>{t}</code>" for t in tags)
+            url = r.get("html_url", f"https://github.com/{GITHUB_USERNAME}/{name}")
+
+            return f'''    <td width="50%" valign="top">
+      <h3 align="center">{icon} <a href="{url}">{title}</a></h3>
+      <p>{desc}</p>
+      <p align="center">{tags_html}</p>
+    </td>'''
+
+        row_html = f'''  <tr>
+{format_card(r1)}
+{format_card(r2)}
+  </tr>'''
+        table_rows.append(row_html)
+
+    return "\n".join(table_rows)
+
+
+def inject_into_readme(repos):
     readme_path = os.path.join(OUTPUT_DIR, "README.md")
+    repo_count = len(repos)
+    projects_table = generate_project_table_html(repos)
+
     content = f'''<p align="center">
   <img src="github-contribution-animation.svg" alt="GitHub Contribution Graph" width="850"/>
 </p>
@@ -500,50 +660,15 @@ An end-to-end AI-driven system engineered to evaluate landslide vulnerability an
 ---
 
 <!-- ================= FEATURED PROJECTS ================= -->
-## 🚀 Featured Projects
+## 🚀 Featured &amp; Recent Projects
 
 <table>
-  <tr>
-    <td width="50%" valign="top">
-      <h3 align="center">🌋 <a href="https://github.com/{GITHUB_USERNAME}/AI-LandSlide-Early-Predication">AI Landslide Early Prediction</a></h3>
-      <p>AI-powered landslide prediction and early warning platform combining ML, environmental indicators, and GIS mapping for disaster risk reduction in Nepal.</p>
-      <p align="center"><code>Python</code> • <code>TypeScript</code> • <code>ML</code> • <code>GIS</code></p>
-    </td>
-    <td width="50%" valign="top">
-      <h3 align="center">🔥 <a href="https://github.com/{GITHUB_USERNAME}/Smart-Fire-Emergency-Response">Smart Fire Emergency Response</a></h3>
-      <p>AI-driven smart fire emergency response system designed for rapid hazard detection, instant alert dissemination, and emergency logistics coordination.</p>
-      <p align="center"><code>JavaScript</code> • <code>AI / ML</code> • <code>IoT</code> • <code>APIs</code></p>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" valign="top">
-      <h3 align="center">🌿 <a href="https://github.com/{GITHUB_USERNAME}/HerbTrace-ayur-block-chain">HerbTrace Blockchain</a></h3>
-      <p>Decentralized provenance and verification platform utilizing blockchain to authenticate and track Ayurvedic herb supply chains from origin to consumer.</p>
-      <p align="center"><code>TypeScript</code> • <code>Blockchain</code> • <code>Smart Contracts</code> • <code>Web3</code></p>
-    </td>
-    <td width="50%" valign="top">
-      <h3 align="center">🩺 <a href="https://github.com/{GITHUB_USERNAME}/Health-AI-Chatbot">Health AI Conversational Assistant</a></h3>
-      <p>Intelligent healthcare conversational assistant providing symptom guidance, medical information triage, and intuitive health insights.</p>
-      <p align="center"><code>JavaScript</code> • <code>AI / NLP</code> • <code>Node.js</code> • <code>APIs</code></p>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" valign="top">
-      <h3 align="center">📊 <a href="https://github.com/{GITHUB_USERNAME}/DSA-Visualizer">Interactive DSA Visualizer</a></h3>
-      <p>Dynamic web-based algorithm visualizer bringing sorting, graph traversals, trees, and core data structures to life with step-by-step animations.</p>
-      <p align="center"><code>TypeScript</code> • <code>Algorithms</code> • <code>Data Structures</code> • <code>Canvas</code></p>
-    </td>
-    <td width="50%" valign="top">
-      <h3 align="center">🌐 <a href="https://github.com/{GITHUB_USERNAME}/Personal-Portfolio">Personal Portfolio Website</a></h3>
-      <p>Modern personal portfolio showcasing projects, technical competencies, and developer journey with responsive layouts and interactive UI.</p>
-      <p align="center"><code>TypeScript</code> • <code>React</code> • <code>Tailwind CSS</code> • <code>Vite</code></p>
-    </td>
-  </tr>
+{projects_table}
 </table>
 
 <p align="center">
   <a href="https://github.com/{GITHUB_USERNAME}?tab=repositories">
-    <img src="https://img.shields.io/badge/Explore%20All%2012+%20Repositories-181717?style=for-the-badge&logo=github" alt="Explore All Repositories" />
+    <img src="https://img.shields.io/badge/Explore%20All%20{repo_count}+%20Repositories-181717?style=for-the-badge&logo=github" alt="Explore All Repositories" />
   </a>
 </p>
 
@@ -643,15 +768,16 @@ An end-to-end AI-driven system engineered to evaluate landslide vulnerability an
 '''
     with open(readme_path, "w", encoding="utf-8") as f:
         f.write(content)
-    print("Updated README.md with 100% comprehensive Sharma964 profile integration!")
+    print("Updated README.md with dynamic projects integration!")
 
 
 # -------------------------------------------------------------------------
 # MAIN
 # -------------------------------------------------------------------------
 if __name__ == "__main__":
+    repos = fetch_github_repos()
     generate_contribution_svg()
     generate_terminal_card_svg()
-    generate_info_card_svg()
-    inject_into_readme()
+    generate_info_card_svg(repo_count=len(repos))
+    inject_into_readme(repos)
     print("All tasks completed successfully for Sharma964!")

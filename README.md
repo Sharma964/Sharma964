@@ -62,26 +62,38 @@ An end-to-end AI-driven system engineered to evaluate landslide vulnerability an
 ---
 
 <!-- ================= FEATURED PROJECTS ================= -->
-## 🚀 Featured Projects
+## 🚀 Featured &amp; Recent Projects
 
 <table>
   <tr>
+    <td width="50%" valign="top">
+      <h3 align="center">🌐 <a href="https://github.com/Sharma964/Personal-Portfolio">Personal Portfolio Website</a></h3>
+      <p>Modern personal portfolio showcasing projects, technical competencies, and developer journey with responsive layouts and interactive UI.</p>
+      <p align="center"><code>TypeScript</code> • <code>React</code> • <code>Tailwind CSS</code> • <code>Vite</code></p>
+    </td>
     <td width="50%" valign="top">
       <h3 align="center">🌋 <a href="https://github.com/Sharma964/AI-LandSlide-Early-Predication">AI Landslide Early Prediction</a></h3>
       <p>AI-powered landslide prediction and early warning platform combining ML, environmental indicators, and GIS mapping for disaster risk reduction in Nepal.</p>
       <p align="center"><code>Python</code> • <code>TypeScript</code> • <code>ML</code> • <code>GIS</code></p>
     </td>
+  </tr>
+  <tr>
     <td width="50%" valign="top">
       <h3 align="center">🔥 <a href="https://github.com/Sharma964/Smart-Fire-Emergency-Response">Smart Fire Emergency Response</a></h3>
       <p>AI-driven smart fire emergency response system designed for rapid hazard detection, instant alert dissemination, and emergency logistics coordination.</p>
       <p align="center"><code>JavaScript</code> • <code>AI / ML</code> • <code>IoT</code> • <code>APIs</code></p>
     </td>
+    <td width="50%" valign="top">
+      <h3 align="center">📊 <a href="https://github.com/Sharma964/DSA-Visualizer">Interactive DSA Visualizer</a></h3>
+      <p>Dynamic web-based algorithm visualizer bringing sorting, graph traversals, trees, and core data structures to life with step-by-step animations.</p>
+      <p align="center"><code>TypeScript</code> • <code>Algorithms</code> • <code>Data Structures</code> • <code>Canvas</code></p>
+    </td>
   </tr>
   <tr>
     <td width="50%" valign="top">
-      <h3 align="center">🌿 <a href="https://github.com/Sharma964/HerbTrace-ayur-block-chain">HerbTrace Blockchain</a></h3>
-      <p>Decentralized provenance and verification platform utilizing blockchain to authenticate and track Ayurvedic herb supply chains from origin to consumer.</p>
-      <p align="center"><code>TypeScript</code> • <code>Blockchain</code> • <code>Smart Contracts</code> • <code>Web3</code></p>
+      <h3 align="center">🍔 <a href="https://github.com/Sharma964/FoodExpress-3d">FoodExpress 3D Web Experience</a></h3>
+      <p>Interactive 3D online food discovery and ordering web application built with modern web graphics and responsive design.</p>
+      <p align="center"><code>TypeScript</code> • <code>Three.js</code> • <code>React</code> • <code>Web3D</code></p>
     </td>
     <td width="50%" valign="top">
       <h3 align="center">🩺 <a href="https://github.com/Sharma964/Health-AI-Chatbot">Health AI Conversational Assistant</a></h3>
@@ -89,23 +101,11 @@ An end-to-end AI-driven system engineered to evaluate landslide vulnerability an
       <p align="center"><code>JavaScript</code> • <code>AI / NLP</code> • <code>Node.js</code> • <code>APIs</code></p>
     </td>
   </tr>
-  <tr>
-    <td width="50%" valign="top">
-      <h3 align="center">📊 <a href="https://github.com/Sharma964/DSA-Visualizer">Interactive DSA Visualizer</a></h3>
-      <p>Dynamic web-based algorithm visualizer bringing sorting, graph traversals, trees, and core data structures to life with step-by-step animations.</p>
-      <p align="center"><code>TypeScript</code> • <code>Algorithms</code> • <code>Data Structures</code> • <code>Canvas</code></p>
-    </td>
-    <td width="50%" valign="top">
-      <h3 align="center">🌐 <a href="https://github.com/Sharma964/Personal-Portfolio">Personal Portfolio Website</a></h3>
-      <p>Modern personal portfolio showcasing projects, technical competencies, and developer journey with responsive layouts and interactive UI.</p>
-      <p align="center"><code>TypeScript</code> • <code>React</code> • <code>Tailwind CSS</code> • <code>Vite</code></p>
-    </td>
-  </tr>
 </table>
 
 <p align="center">
   <a href="https://github.com/Sharma964?tab=repositories">
-    <img src="https://img.shields.io/badge/Explore%20All%2012+%20Repositories-181717?style=for-the-badge&logo=github" alt="Explore All Repositories" />
+    <img src="https://img.shields.io/badge/Explore%20All%2011+%20Repositories-181717?style=for-the-badge&logo=github" alt="Explore All Repositories" />
   </a>
 </p>
 

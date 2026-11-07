@@ -1,13 +1,13 @@
-name: Auto-Sync GitHub Avatar & Profile
+name: Auto-Sync GitHub Profile (Avatar & Projects)
 
 on:
   schedule:
-    # Run automatically every 24 hours (at midnight UTC)
+    # Run automatically every 24 hours at midnight UTC
     - cron: "0 0 * * *"
-  workflow_dispatch: # Allows one-click manual update anytime from GitHub
+  workflow_dispatch: # Allows 1-click instant manual sync anytime
 
 jobs:
-  sync-avatar:
+  sync-profile:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -25,20 +25,21 @@ jobs:
         run: |
           pip install Pillow requests
 
-      - name: Fetch latest avatar & regenerate assets
+      - name: Fetch live repositories & refresh assets
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DOWNLOAD_AVATAR: "1"
         run: |
-          python generate_profile_assets.py
+          python generate_profile_assets.py --refresh-all
 
-      - name: Commit and push changes if avatar updated
+      - name: Commit and push changes if profile updated
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add avatar.png terminal-card.svg
+          git add avatar.png terminal-card.svg info-card.svg README.md repos_cache.json
           if git diff --staged --quiet; then
-            echo "No changes in avatar detected."
+            echo "No profile or project changes detected."
           else
-            git commit -m "chore(avatar): auto-sync ASCII portrait with latest GitHub profile picture"
+            git commit -m "chore(sync): auto-sync latest projects and assets from GitHub"
             git push origin main
           fi
